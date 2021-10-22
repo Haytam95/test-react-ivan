@@ -60,6 +60,7 @@ export class MyTypescriptComponent extends React.Component<PropsMyTypescriptComp
         }
     }
 
+    
 
     componentDidMount() {
         this.loadEmployees().then();
