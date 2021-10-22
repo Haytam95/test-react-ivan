@@ -42,6 +42,7 @@ export class MyCustomInput extends React.Component<Props, State> {
     render() {
         return (
             <>
+                <label>Componente clase</label>
                 <input type="text" value={this.state.model} onChange={(event) => this.valueChanged(event.target.value)} />
             </>
         );

@@ -14,7 +14,7 @@ interface StateMyTypescriptComponent {
     cargando: boolean
 }
 
-export class MyTypescriptComponent extends React.Component<PropsMyTypescriptComponent, StateMyTypescriptComponent> {
+export class TypescriptRequestClassComponent extends React.Component<PropsMyTypescriptComponent, StateMyTypescriptComponent> {
 
     state: StateMyTypescriptComponent = {
         cantidad: 0,
@@ -60,7 +60,7 @@ export class MyTypescriptComponent extends React.Component<PropsMyTypescriptComp
         }
     }
 
-    
+
 
     componentDidMount() {
         this.loadEmployees().then();
