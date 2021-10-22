@@ -14,33 +14,53 @@ async function requestEmployee(): Promise<string> {
     }
 }
 
-export function RequestFunctionComponent(props: Props) {
+export function RequestFunctionComponent(props: Props): JSX.Element {
 
     const [clickCount, setClickCount] = useState(props.initialClickCount || 0);
     const [requestValue, setRequestValue] = useState('');
+    const [cargando, setCargando] = useState(false);
 
     const buttonClicked = () => {
         setClickCount(clickCount + 1);
+        makeHttpRequest();
+    }
+
+    const makeHttpRequest = () => {
+        setCargando(true)
         requestEmployee().then((value: string) => {
             setRequestValue(value);
-        })
+        }).finally(() => setCargando(false));
     }
 
     useEffect(() => {
-        requestEmployee().then((value: string) => {
-            setRequestValue(value);
-        })
+        makeHttpRequest();
     }, [])
 
+    if (cargando) {
+        return (
+            <>
+                <Cargando/>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <button onClick={buttonClicked}>Clickeaste {clickCount} veces.
+                </button>
+
+                <h3>Resultado de la respuesta:</h3>
+
+                <p>{requestValue}</p>
+            </>
+        )
+    }
+
+}
+
+function Cargando(): JSX.Element {
     return (
         <>
-            <button onClick={buttonClicked}>Clickeaste {clickCount} veces.
-            </button>
-
-            <h3>Resultado de la respuesta:</h3>
-
-            <p>{requestValue}</p>
+            <p>Estoy cargando!</p>
         </>
     )
-
 }
