@@ -31,7 +31,7 @@ function App() {
                 <h1>Function components</h1>
 
                 <MyCustomInputWithFunction model={miTexto} modelChanged={setMiTexto}/>
-                <RequestFunctionComponent initialClickCount={1}/>
+                <RequestFunctionComponent />
 
             </div>
         </>
